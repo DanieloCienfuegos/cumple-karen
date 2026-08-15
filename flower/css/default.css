@@ -229,8 +229,32 @@ body {
    ese layout, se escala el bloque completo como una sola unidad para que
    quepa en cualquier pantalla (celular, tablet o laptop chica). Como el
    canvas del corazón lee su tamaño real de CSS al cargar (functions.js),
-   esto no requiere tocar nada del JS. */
+   esto no requiere tocar nada del JS. Se usan valores fijos por punto de
+   quiebre (en vez de calc()/min() anidados) para máxima compatibilidad. */
 #content {
-  transform: scale(min(1, calc(100vw / 1050px)));
   transform-origin: 50% 50%;
+}
+
+@media (max-width: 1040px) {
+  #content { transform: scale(0.9); }
+}
+
+@media (max-width: 900px) {
+  #content { transform: scale(0.75); }
+}
+
+@media (max-width: 700px) {
+  #content { transform: scale(0.58); }
+}
+
+@media (max-width: 500px) {
+  #content { transform: scale(0.42); }
+}
+
+@media (max-width: 400px) {
+  #content { transform: scale(0.34); }
+}
+
+@media (max-width: 340px) {
+  #content { transform: scale(0.29); }
 }
