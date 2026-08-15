@@ -823,3 +823,59 @@ body, html{
 body:not(.started) * {
   animation-play-state: paused !important;
 }
+
+/* Red de seguridad extra para la altura real en móvil (barra de
+   direcciones que aparece/desaparece) además del height:100% ya existente */
+@supports (height: 100dvh) {
+  body, html {
+    min-height: 100dvh;
+  }
+}
+
+/* Responsive: los textos usaban tamaños en "em" pensados para escritorio
+   (hasta 6em) dentro de contenedores con overflow:hidden, así que en un
+   celular angosto se recortaban y quedaban ilegibles. Se reducen aquí sin
+   tocar las animaciones ni el resto del diseño. */
+@media (max-width: 600px) {
+  .slide--content {
+    padding: 1.2em;
+  }
+
+  .first--slide .slide--content h1 {
+    font-size: 3em;
+  }
+
+  .first--slide .slide--content h2 {
+    font-size: 2.2em;
+  }
+
+  .slide--content--one h1.first {
+    font-size: 3em;
+  }
+
+  .slide--content--one h2.first,
+  .slide--content--one h2.second {
+    font-size: 2.4em;
+  }
+
+  .slide--content--one h1.second {
+    font-size: 3em;
+  }
+
+  .second--canvas .content {
+    font-size: 2.4em;
+  }
+
+  .third--canvas .center--line h1 {
+    font-size: 2.4em;
+  }
+
+  .third--canvas .center--line h1.final-message {
+    font-size: 1.7em;
+  }
+
+  #start-button {
+    font-size: 1.3em;
+    padding: 14px 26px;
+  }
+}
